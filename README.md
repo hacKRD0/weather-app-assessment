@@ -14,8 +14,8 @@ A modern, TypeScript-based weather application built with Express.js that provid
 
 ## Prerequisites
 
-- Node.js (v14 or later)
-- npm (v7 or later) or Yarn
+- Node.js (v18 or later)
+- npm (v9 or later) or Yarn
 - OpenWeatherMap API key (get one [here](https://openweathermap.org/api))
 
 ## Installation
@@ -330,13 +330,3 @@ Contributions are welcome! Please:
 
 This project is licensed under the **MIT License**.
 
-[1]: https://openweathermap.org/price?utm_source=chatgpt.com "Pricing - OpenWeatherMap"
-[2]: https://dev.to/moibra/best-practices-for-structuring-an-expressjs-project-148i?utm_source=chatgpt.com "Best Practices for Structuring an Express.js Project - DEV Community"
-[3]: https://stackoverflow.com/questions/26973484/how-do-i-setup-the-dotenv-file-in-node-js?utm_source=chatgpt.com "How do I setup the dotenv file in Node.js? - Stack Overflow"
-[4]: https://medium.com/%40it.ermias.asmare/node-js-express-with-jest-and-supertest-e58aaf4c4514?utm_source=chatgpt.com "Node.js Express testing with Jest and SuperTest | by Ermias Asmare"
-[5]: https://openweathermap.org/api?utm_source=chatgpt.com "Weather API - OpenWeatherMap"
-[6]: https://www.npmjs.com/package/dotenv?utm_source=chatgpt.com "dotenv - NPM"
-[7]: https://softwareontheroad.com/ideal-nodejs-project-structure/?utm_source=chatgpt.com "Bulletproof node.js project architecture 🛡️ - Software on the Road"
-[8]: https://www.dennisokeeffe.com/blog/2023-10-27-testing-express-apps-with-jest-and-supertest?utm_source=chatgpt.com "Mastering API Testing with Supertest, Express.js, and Jest"
-[9]: https://www.forestadmin.com/blog/an-experts-guide-to-crud-apis-designing-a-robust-one/?utm_source=chatgpt.com "An expert's guide to CRUD APIs: designing a robust one"
-[10]: https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/?utm_source=chatgpt.com "Best practices for REST API design - The Stack Overflow Blog"
