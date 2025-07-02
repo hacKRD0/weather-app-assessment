@@ -4,14 +4,13 @@ A modern, TypeScript-based weather application built with Express.js that provid
 
 ## Features
 
-- Get current weather by city name, zip code, or coordinates
-- Get weather forecast for the next 5 days
-- Input validation for different location formats
-- Comprehensive error handling
-- Unit and integration tests
-- TypeScript support
-- Environment-based configuration
-- API documentation
+- Get current weather by **city name / ZIP code** *or* **direct GPS coordinates** (lat & lon)
+- Get 5-day weather forecast
+- Flexible input: provide `location` **or** both `lat` & `lon`
+- Centralized error handling with descriptive messages
+- Written in modern **TypeScript** with ES-module syntax
+- Environment-driven configuration (.env)
+- Ready for containerisation & cloud deployment
 
 ## Prerequisites
 
@@ -66,11 +65,14 @@ weather-app/
 ### Get Current Weather
 
 ```
-GET /api/weather/current?location={city|zip|lat,lon}
+GET /api/weather/current?location={city|zip}&lat={latitude}&lon={longitude}
 ```
 
 **Parameters:**
-- `location` (required): City name, ZIP code, or coordinates (e.g., "London", "10001", "40.7128,-74.0060")
+- Provide **either** `location` (city or ZIP) **OR** both `lat` & `lon`.
+  - Examples:
+    - `/api/weather/current?location=London`
+    - `/api/weather/current?lat=51.5074&lon=-0.1278`
 
 **Success Response:**
 ```json
@@ -94,11 +96,14 @@ GET /api/weather/current?location={city|zip|lat,lon}
 ### Get Weather Forecast
 
 ```
-GET /api/weather/forecast?location={city|zip|lat,lon}
+GET /api/weather/forecast?location={city|zip}&lat={latitude}&lon={longitude}
 ```
 
 **Parameters:**
-- `location` (required): City name, ZIP code, or coordinates (e.g., "London", "10001", "40.7128,-74.0060")
+- Provide **either** `location` (city or ZIP) **OR** both `lat` & `lon`.
+  - Examples:
+    - `/api/weather/current?location=London`
+    - `/api/weather/current?lat=51.5074&lon=-0.1278`
 
 **Success Response:**
 ```json
@@ -140,19 +145,15 @@ npm run build
 npm start
 ```
 
-## Testing
 
-Run unit and integration tests:
 
-```bash
-npm test
-```
 
-Run tests with coverage:
 
-```bash
-npm run test:coverage
-```
+
+
+
+
+
 
 ## Error Handling
 
