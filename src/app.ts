@@ -8,6 +8,8 @@ import { fileURLToPath } from 'url';
 
 // Routes
 import weatherRoutes from './routes/weatherRoutes.js';
+import recordRoutes from './routes/recordRoutes.js';
+import { AppDataSource } from './config/data-source.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 
 // ES Module equivalent of __dirname
@@ -28,6 +30,11 @@ class App {
     this.port = port;
 
     this.initializeMiddlewares();
+
+    // Initialize database
+    AppDataSource.initialize()
+      .then(() => console.log('📦 Database connected'))
+      .catch((err: unknown) => console.error('DB connection error', err));
     this.initializeErrorHandling();
 
   }
@@ -62,6 +69,7 @@ class App {
 
     // API routes
     this.app.use('/api/weather', weatherRoutes);
+    this.app.use('/api/records', recordRoutes);
 
     // Serve static files in production
     if (process.env.NODE_ENV === 'production') {

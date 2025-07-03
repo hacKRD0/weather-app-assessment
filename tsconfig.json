@@ -4,6 +4,9 @@
       "outDir": "./dist",
       "rootDir": "./src",
       "forceConsistentCasingInFileNames": true,
+      "importHelpers": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "src/tests"]

@@ -11,7 +11,7 @@ const router = Router();
  * @param   {string} location - City name, zip code, or coordinates (lat,lon)
  * @returns {Object} Weather data for the specified location
  */
-router.get('/current', (req: Request, res: Response, next: NextFunction) => 
+router.post('/current', (req: Request, res: Response, next: NextFunction) => 
   WeatherController.getCurrentWeather(req, res, next)
 );
 
@@ -22,7 +22,7 @@ router.get('/current', (req: Request, res: Response, next: NextFunction) =>
  * @param   {string} location - City name, zip code, or coordinates (lat,lon)
  * @returns {Array} Weather forecast data for the specified location
  */
-router.get('/forecast', (req: Request, res: Response, next: NextFunction) => 
+router.post('/forecast', (req: Request, res: Response, next: NextFunction) => 
   WeatherController.getForecast(req, res, next)
 );
 

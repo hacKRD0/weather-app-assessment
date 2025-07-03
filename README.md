@@ -1,11 +1,13 @@
 # Weather App
 
-A modern, TypeScript-based weather application built with Express.js that provides current weather and forecast data using the OpenWeatherMap API.
+A modern, TypeScript-based weather application built with Express.js that provides current weather, forecast data, and historical weather record management using the OpenWeatherMap API.
 
 ## Features
 
 - Get current weather by **city name / ZIP code** *or* **direct GPS coordinates** (lat & lon)
 - Get 5-day weather forecast
+- **CRUD operations** for weather records
+- Store and retrieve historical weather data
 - Flexible input: provide `location` **or** both `lat` & `lon`
 - Centralized error handling with descriptive messages
 - Written in modern **TypeScript** with ES-module syntax
@@ -47,6 +49,8 @@ weather-app/
 ├── src/
 │   ├── config/          # Configuration and constants
 │   ├── controllers/     # Request handlers
+│   ├── entities/        # TypeORM entity definitions
+│   ├── repositories/    # Database repositories
 │   ├── services/        # Business logic and external API calls
 │   ├── routes/          # Route definitions
 │   ├── utils/           # Helper functions and validators
@@ -62,10 +66,12 @@ weather-app/
 
 ## API Endpoints
 
-### Get Current Weather
+### Weather Data
+
+#### Get Current Weather
 
 ```
-GET /api/weather/current?location={city|zip}&lat={latitude}&lon={longitude}
+POST /api/weather/current?location={city|zip}&lat={latitude}&lon={longitude}
 ```
 
 **Parameters:**
@@ -93,10 +99,10 @@ GET /api/weather/current?location={city|zip}&lat={latitude}&lon={longitude}
 }
 ```
 
-### Get Weather Forecast
+#### Get Weather Forecast
 
 ```
-GET /api/weather/forecast?location={city|zip}&lat={latitude}&lon={longitude}
+POST /api/weather/forecast?location={city|zip}&lat={latitude}&lon={longitude}
 ```
 
 **Parameters:**
@@ -122,11 +128,102 @@ GET /api/weather/forecast?location={city|zip}&lat={latitude}&lon={longitude}
       "city": "London",
       "country": "GB",
       "dt": 1620000000
-    },
-    // ... more forecast items
+    }
   ]
 }
 ```
+
+### Weather Records (CRUD)
+
+#### Create Weather Records
+
+```
+POST /api/records
+```
+
+**Request Body (JSON):**
+```json
+{
+  "location": "New York",
+  "startDate": "2025-07-01",
+  "endDate": "2025-07-05"
+}
+```
+
+**Success Response (201 Created):**
+```json
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "location": "New York",
+    "date": "2025-07-01",
+    "temperature": 28.5,
+    "description": "clear sky"
+  },
+  // ... more records
+]
+```
+
+#### Get All Records
+
+```
+GET /api/records
+```
+
+**Success Response (200 OK):**
+```json
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "location": "New York",
+    "date": "2025-07-01",
+    "temperature": 28.5,
+    "description": "clear sky"
+  },
+  // ... more records
+]
+```
+
+#### Get Record by ID
+
+```
+GET /api/records/{id}
+```
+
+**Success Response (200 OK):**
+```json
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "location": "New York",
+  "date": "2025-07-01",
+  "temperature": 28.5,
+  "description": "clear sky"
+}
+```
+
+#### Update Record
+
+```
+PUT /api/records/{id}
+```
+
+**Request Body (JSON):**
+```json
+{
+  "temperature": 30.2,
+  "description": "sunny"
+}
+```
+
+**Success Response:** 204 No Content
+
+#### Delete Record
+
+```
+DELETE /api/records/{id}
+```
+
+**Success Response:** 204 No Content
 
 ## Running the Application
 
@@ -170,7 +267,8 @@ The API returns appropriate HTTP status codes along with error messages in the f
 
 - `400 Bad Request`: Invalid or missing parameters
 - `401 Unauthorized`: Missing or invalid API key
-- `404 Not Found`: Location not found
+- `404 Not Found`: Resource not found
+- `422 Unprocessable Entity`: Validation error
 - `429 Too Many Requests`: Rate limit exceeded
 - `500 Internal Server Error`: Server error
 
@@ -179,6 +277,11 @@ The API returns appropriate HTTP status codes along with error messages in the f
 - `PORT`: Port number for the server (default: 3000)
 - `NODE_ENV`: Application environment (development, test, production)
 - `OPENWEATHER_API_KEY`: Your OpenWeatherMap API key
+- `DB_HOST`: Database host (default: localhost)
+- `DB_PORT`: Database port (default: 5432)
+- `DB_USERNAME`: Database username
+- `DB_PASSWORD`: Database password
+- `DB_NAME`: Database name
 
 ## Contributing
 
@@ -225,30 +328,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 3. Project Structure
-
-Follow a modular layout to keep growth manageable:
-
-```
-weather-app/
-├── src/
-│   ├── controllers/      # Route handlers (Express controllers)
-│   ├── services/         # Business logic (e.g., OpenWeather API calls)
-│   ├── routes/           # Express route definitions
-│   ├── utils/            # Utility functions (e.g., input validation)
-│   ├── config/           # Configuration loaders (dotenv, constants)
-│   └── app.ts            # Express app initialization
-├── tests/                # Jest & SuperTest test suites
-├── .env                  # Environment variables (not committed)
-├── package.json
-└── tsconfig.json
-```
-
-This separation of concerns follows **best practices for Express** projects, improving clarity and scalability ([dev.to][2]) and aligns with a **3-layer architecture** that isolates business logic from routing ([softwareontheroad.com][7]).
-
----
-
-## 4. Running the App
+## 3. Running the App
 
 1. **Compile TypeScript** (if using TS):
 

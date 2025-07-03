@@ -1,4 +1,6 @@
+import { format, formatDate } from 'date-fns/format';
 import { API_CONFIG, DEFAULT_VALUES, ERROR_MESSAGES } from '../config/constants.js';
+import { createRecord } from '../repositories/weatherRecordRepo.js';
 import { isValidLocation } from '../utils/validators.js';
 import dotenv from 'dotenv';
 
@@ -30,6 +32,7 @@ interface OpenWeatherCity {
 }
 
 interface OpenWeatherResponse {
+  dt: number
   main: OpenWeatherMain;
   weather: OpenWeatherWeather[];
   sys: OpenWeatherSys;
@@ -146,6 +149,14 @@ export default class WeatherService {
       }
 
       const data = await response.json() as Record<string, any>;
+
+      const rec = await createRecord({
+        location,
+        date: format(new Date(data.dt * 1000), 'yyyy-MM-dd'),
+        temperature: data.main.temp,
+        description: data.weather?.[0]?.description,
+      });
+
       return this.mapWeatherData(data, { name, country });
     } catch (error: unknown) {
       console.error('WeatherService error:', error);
@@ -205,6 +216,15 @@ export default class WeatherService {
       }
 
       const data = await response.json() as OpenWeatherForecastResponse;
+      const records = [];
+      data.list.forEach(item => {
+        records.push(createRecord({
+          location,
+          date: format(new Date(item.dt * 1000), 'yyyy-MM-dd'),
+          temperature: item.main.temp,
+          description: item.weather?.[0]?.description,
+        }));
+      })
       return data.list.map(item => this.mapWeatherData(item, { 
         name: name || data.city?.name, 
         country: country || data.city?.country 
