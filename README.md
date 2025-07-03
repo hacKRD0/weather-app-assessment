@@ -352,17 +352,25 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### 📽️ Demo
 
-A demo video showcasing the application's CRUD (Create, Read, Update, Delete) functionalities is available in the `demo.mp4` file. This video demonstrates:
+A comprehensive demonstration video is available, showcasing the application's core CRUD (Create, Read, Update, Delete) functionalities.
 
-- Viewing current weather conditions
-- Accessing weather forecasts
-- Managing historical weather records
-- Using the application's interactive features
+#### 🎬 What's in the Demo
 
-To watch the demo:
-1. Download the `demo.mp4` file from the repository
-2. Open it with any standard video player
-3. See the application in action!
+- **Current Weather** - Real-time weather conditions
+- **Forecast Data** - Upcoming weather predictions
+- **Record Management** - Weather record management (CRUD operations)
+
+#### 📺 How to Watch
+
+**Option 1: Stream Online**
+▶️ [Watch on Google Drive](https://drive.google.com/file/d/1yztdiUAXhYbFR3GzpJWi6IeE0oFXuYiM/view?usp=sharing)
+
+**Option 2: Download Local Copy**
+1. Download `demo.mp4` from the repository
+2. Open with any video player
+3. Enjoy the demonstration!
+
+---
 
 ### 📦 Postman Collection
 
