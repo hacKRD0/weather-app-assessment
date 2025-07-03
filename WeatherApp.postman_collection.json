@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "ed8c2454-e20b-451b-a8a2-c2cb8bc614b3",
+		"name": "WeatherApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32473527"
+	},
+	"item": [
+		{
+			"name": "current",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/weather/current?lat=22.0&lon=21.9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"weather",
+						"current"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "London",
+							"disabled": true
+						},
+						{
+							"key": "lat",
+							"value": "22.0"
+						},
+						{
+							"key": "lon",
+							"value": "21.9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forecast",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/weather/forecast?location=London",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"weather",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "London"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"location\": \"London\",\r\n    \"startDate\": \"2021-03-20\",\r\n    \"endDate\": \"2021-03-21\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/records/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"records",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "read",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/records/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"records",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"location\": \"Update\",\r\n    \"date\": 1751516955,\r\n    \"temperature\": 12.08,\r\n    \"description\": \"clear sky\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/records/d7041368-6588-41d3-8e68-11126c9cf69d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"records",
+						"d7041368-6588-41d3-8e68-11126c9cf69d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/records/d7041368-6588-41d3-8e68-11126c9cf69d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"records",
+						"d7041368-6588-41d3-8e68-11126c9cf69d"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

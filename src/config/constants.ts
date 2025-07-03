@@ -16,6 +16,7 @@ export const ERROR_MESSAGES = {
   INVALID_LOCATION: 'Please provide a valid location (city name, zip code, or coordinates)',
   SERVICE_UNAVAILABLE: 'Weather service is currently unavailable',
   LOCATION_NOT_FOUND: 'Location not found',
+  ENDPOINT_NOT_FOUND: 'Endpoint not found',
   RATE_LIMIT_EXCEEDED: 'Rate limit exceeded. Please try again later.',
   INTERNAL_SERVER_ERROR: 'Internal server error',
   INVALID_API_KEY: 'Invalid API key. Please check your configuration.',

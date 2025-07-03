@@ -68,7 +68,7 @@ weather-app/
 
 ### Weather Data
 
-#### Get Current Weather
+#### Post Current Weather
 
 ```
 POST /api/weather/current?location={city|zip}&lat={latitude}&lon={longitude}
@@ -99,7 +99,7 @@ POST /api/weather/current?location={city|zip}&lat={latitude}&lon={longitude}
 }
 ```
 
-#### Get Weather Forecast
+#### Post Weather Forecast
 
 ```
 POST /api/weather/forecast?location={city|zip}&lat={latitude}&lon={longitude}
@@ -136,6 +136,10 @@ POST /api/weather/forecast?location={city|zip}&lat={latitude}&lon={longitude}
 ### Weather Records (CRUD)
 
 #### Create Weather Records
+
+> **Note:** This endpoint requires an OpenWeatherMap API key with access to the History API (includes historical weather data from 1979 to 4 days of forecast). Make sure your API key has the necessary subscription level to access historical weather data.
+
+
 
 ```
 POST /api/records
@@ -343,6 +347,32 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 3. **Access** the app at `http://localhost:${PORT}/weather?location=London`
 
 ---
+
+## 4. Demo and Postman Collection
+
+### 📽️ Demo
+
+A demo video showcasing the application's CRUD (Create, Read, Update, Delete) functionalities is available in the `demo.mp4` file. This video demonstrates:
+
+- Viewing current weather conditions
+- Accessing weather forecasts
+- Managing historical weather records
+- Using the application's interactive features
+
+To watch the demo:
+1. Download the `demo.mp4` file from the repository
+2. Open it with any standard video player
+3. See the application in action!
+
+### 📦 Postman Collection
+
+A Postman collection is available in the `WeatherApp.postman_collection.json` file. This collection includes all the endpoints for the application, making it easy to test and explore the API.
+
+To import the collection into Postman:
+1. Open Postman
+2. Click on the "Import" button
+3. Select the `WeatherApp.postman_collection.json` file
+4. Import the collection
 
 ## License
 

@@ -101,7 +101,7 @@ export const notFoundHandler = (
   _res: Response, 
   next: NextFunction
 ): void => {
-  const error = new Error(ERROR_MESSAGES.LOCATION_NOT_FOUND);
+  const error = new Error(ERROR_MESSAGES.ENDPOINT_NOT_FOUND);
   (error as CustomError).statusCode = 404;
   next(error);
 };

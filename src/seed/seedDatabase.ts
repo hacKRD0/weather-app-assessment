@@ -49,7 +49,7 @@ export async function seedDatabase() {
         ])
       });
     }
-  }
+  } 
 
   // Save in batches of 50 to avoid memory issues
   const batchSize = 50;
