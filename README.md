@@ -13,6 +13,7 @@ A modern, TypeScript-based weather application built with Express.js that provid
 - Written in modern **TypeScript** with ES-module syntax
 - Environment-driven configuration (.env)
 - Ready for containerisation & cloud deployment
+- **Local SQLite Database** - No external database server required
 
 ## Prerequisites
 
@@ -20,7 +21,7 @@ A modern, TypeScript-based weather application built with Express.js that provid
 - npm (v9 or later) or Yarn
 - OpenWeatherMap API key (get one [here](https://openweathermap.org/api))
 
-## Installation
+## Installation & Running
 
 1. **Clone the repository**
    ```bash
@@ -41,6 +42,17 @@ A modern, TypeScript-based weather application built with Express.js that provid
      PORT=3000
      NODE_ENV=development
      ```
+4. Running the App
+    - Compile TypeScript
+      ```bash
+      npm run build
+      ```
+    - Start the server
+      ```bash
+      npm start
+      ```
+
+    - Access the app at `http://localhost:${PORT}/weather?location=London`
 
 ## Project Structure
 
@@ -281,11 +293,6 @@ The API returns appropriate HTTP status codes along with error messages in the f
 - `PORT`: Port number for the server (default: 3000)
 - `NODE_ENV`: Application environment (development, test, production)
 - `OPENWEATHER_API_KEY`: Your OpenWeatherMap API key
-- `DB_HOST`: Database host (default: localhost)
-- `DB_PORT`: Database port (default: 5432)
-- `DB_USERNAME`: Database username
-- `DB_PASSWORD`: Database password
-- `DB_NAME`: Database name
 
 ## Contributing
 
@@ -295,60 +302,7 @@ The API returns appropriate HTTP status codes along with error messages in the f
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [OpenWeatherMap](https://openweathermap.org/) for the weather data API
-- [Express.js](https://expressjs.com/) for the web framework
-- [TypeScript](https://www.typescriptlang.org/) for type safety
-- [Jest](https://jestjs.io/) for testing
-
-   ```bash
-   git clone https://github.com/your-username/weather-app.git
-   cd weather-app
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
----
-
-## 2. Configuration
-
-1. **Obtain an OpenWeatherMap API key** by signing up at [https://openweathermap.org/api](https://openweathermap.org/api) ([openweathermap.org][5]).
-2. **Create a `.env` file** in the project root:
-
-   ```dotenv
-   OPENWEATHER_API_KEY=your_api_key_here
-   PORT=3000
-   ```
-3. **Load environment variables** at startup by using [dotenv](https://www.npmjs.com/package/dotenv), which populates `process.env` securely ([npmjs.com][6]).
-
----
-
-## 3. Running the App
-
-1. **Compile TypeScript** (if using TS):
-
-   ```bash
-   npm run build
-   ```
-2. **Start the server**:
-
-   ```bash
-   npm start
-   ```
-3. **Access** the app at `http://localhost:${PORT}/weather?location=London`
-
----
-
-## 4. Demo and Postman Collection
+## Demo and Postman Collection
 
 ### 📽️ Demo
 
